@@ -16,11 +16,11 @@
     <header class="border-b border-gray-800 pb-4 mb-6 flex justify-between items-center">
         <div>
             <h1 class="text-2xl font-bold tracking-wider text-yellow-400">🏎️ PIT WALL // STRATEGY ENGINE</h1>
-            <p class="text-xs text-gray-400">Circuito de Pruebas: Monza (53 Vueltas)</p>
+            <p class="text-xs text-gray-400">Modo: Comparación de Compuestos en Tiempo Real (Monza - 53 Vueltas)</p>
         </div>
         <div class="bg-gray-900 px-4 py-2 rounded border border-gray-800 text-right">
             <span class="text-xs block text-gray-500">ESTADO DEL SISTEMA</span>
-            <span class="text-emerald-400 font-bold text-sm text-xs">LIVE / ONLINE</span>
+            <span class="text-emerald-400 font-bold text-xs">LIVE / MULTI-CAR_ONLINE</span>
         </div>
     </header>
 
@@ -28,38 +28,48 @@
         
         <div class="bg-gray-900 p-5 rounded-lg border border-gray-800 flex flex-col justify-between">
             <div>
-                <h2 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 border-b border-gray-800 pb-2">Configuración</h2>
+                <h2 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 border-b border-gray-800 pb-2">Configuración de Carrera</h2>
                 
-                <div class="mb-6">
-                    <label class="block text-xs text-gray-400 mb-2">Compuesto del Neumático</label>
-                    <select id="tyreSelect" class="w-full bg-gray-950 border border-gray-800 rounded p-2 text-sm text-yellow-400 focus:outline-none focus:border-yellow-400">
-                        <option value="SOFT">🔴 Blando (Soft)</option>
-                        <option value="MEDIUM" selected>🟡 Medio (Medium)</option>
-                        <option value="HARD">⚪ Duro (Hard)</option>
+                <div class="mb-5 bg-gray-950 p-3 rounded border border-gray-800">
+                    <label class="block text-xs font-bold text-red-400 uppercase mb-2">🔴 Estrategia Auto 1</label>
+                    <select id="tyreSelect1" class="w-full bg-gray-900 border border-gray-800 rounded p-2 text-sm text-gray-200 focus:outline-none focus:border-red-400">
+                        <option value="SOFT" selected>Blando (Soft)</option>
+                        <option value="MEDIUM">Medio (Medium)</option>
+                        <option value="HARD">Duro (Hard)</option>
                     </select>
                 </div>
 
-                <div class="mb-6">
-                    <label class="block text-xs text-gray-400 mb-2">Vueltas Planificadas en la Tanda</label>
-                    <input type="range" id="lapsRange" min="5" max="40" value="20" class="w-full accent-yellow-400">
+                <div class="mb-6 bg-gray-950 p-3 rounded border border-gray-800">
+                    <label class="block text-xs font-bold text-yellow-400 uppercase mb-2">🟡 Estrategia Auto 2</label>
+                    <select id="tyreSelect2" class="w-full bg-gray-900 border border-gray-800 rounded p-2 text-sm text-gray-200 focus:outline-none focus:border-yellow-400">
+                        <option value="SOFT">Blando (Soft)</option>
+                        <option value="MEDIUM" selected>Medio (Medium)</option>
+                        <option value="HARD">Duro (Hard)</option>
+                    </select>
+                </div>
+
+                <div class="mb-6 px-1">
+                    <label class="block text-xs text-gray-400 mb-2 uppercase tracking-wider">Duración del Stint (Vueltas)</label>
+                    <input type="range" id="lapsRange" min="5" max="45" value="25" class="w-full accent-yellow-400">
                     <div class="flex justify-between text-xs text-gray-500 mt-1">
                         <span>5v</span>
-                        <span id="lapsValue" class="text-yellow-400 font-bold text-sm">20 vueltas</span>
-                        <span>40v</span>
+                        <span id="lapsValue" class="text-yellow-400 font-bold text-sm">25 vueltas</span>
+                        <span>45v</span>
                     </div>
                 </div>
             </div>
 
             <button id="runBtn" class="w-full bg-yellow-400 text-gray-950 font-bold py-3 rounded hover:bg-yellow-300 transition-colors uppercase tracking-wider text-sm mt-4">
-                Calcular Telemetría
+                Simular Duelo de Ritmos
             </button>
         </div>
 
         <div class="lg:col-span-2 bg-gray-900 p-5 rounded-lg border border-gray-800">
-            <h2 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 border-b border-gray-800 pb-2">Curva de Degradación (Tiempos por Vuelta)</h2>
-            <div class="h-64 w-full relative">
+            <h2 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 border-b border-gray-800 pb-2">Telemetría Comparativa (Tiempos por Vuelta)</h2>
+            <div class="h-[350px] w-full relative">
                 <canvas id="strategyChart"></canvas>
             </div>
+            <p class="text-[10px] text-gray-500 mt-3 text-center">Nota: Los tiempos más bajos en el eje vertical (Y) significan un ritmo más rápido.</p>
         </div>
 
     </div>
